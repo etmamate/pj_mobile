@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:pj_mobile/pages/telahomepage.dart';
 
-class Loginscreen extends StatelessWidget {
+class Telalogin extends StatelessWidget {
+  const Telalogin({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: LoginScreen(),
       theme: ThemeData.dark(), // Tema escuro para imitar o fundo da imagem
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    paraHome() {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,7 +31,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             // Logo ou título do app
             Text(
-              'Senhor dos Review',
+              'Senhor dos Reviews',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
@@ -31,22 +41,22 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: 20),
             // Texto de boas-vindas
             Text(
-              'Welcome back',
+              'Bem-vindo de volta!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
             Text(
-              'Login to access your account below.',
+              'Realize o login abaixo para acessar sua conta.',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 20),
             // Campo de e-mail
             TextField(
               decoration: InputDecoration(
-                labelText: 'Email Address',
+                labelText: 'E-mail',
                 labelStyle: TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(),
-                hintText: 'Enter your email...',
+                hintText: 'Digite seu e-mail...',
               ),
             ),
             SizedBox(height: 10),
@@ -54,10 +64,10 @@ class LoginScreen extends StatelessWidget {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: 'Senha',
                 labelStyle: TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(),
-                hintText: 'Enter your password...',
+                hintText: 'Digite sua senha...',
               ),
             ),
             SizedBox(height: 10),
@@ -66,7 +76,7 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {},
-                child: Text('Forgot Password?'),
+                child: Text('Esqueci minha senha?'),
               ),
             ),
             SizedBox(height: 10),
@@ -84,34 +94,34 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account? "),
-                TextButton(onPressed: () {}, child: Text('Create')),
+                Text("Não tem uma conta? "),
+                TextButton(onPressed: () {}, child: Text('Criar')),
               ],
             ),
             SizedBox(height: 10),
             // Botão Continue as Guest
             OutlinedButton(
-              onPressed: () {},
+              onPressed: paraHome,
               style: OutlinedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 side: BorderSide(color: Colors.teal),
               ),
               child: Text(
-                'Continue as Guest',
+                'Continuar como convidado',
                 style: TextStyle(color: Colors.teal),
               ),
             ),
             // Linha curva inferior (simplificada)
-            Container(
-              height: 50,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.teal, Colors.black],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
+            // Container(
+            //   height: 50,
+            //   decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //       colors: [Colors.teal, Colors.black],
+            //       begin: Alignment.topCenter,
+            //       end: Alignment.bottomCenter,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
