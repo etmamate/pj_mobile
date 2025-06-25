@@ -23,7 +23,7 @@ class ReviewDatabase {
   // Update
 
   Future updateReview(Reviews oldReviews, String newReview) async {
-    await database.update({'content': newReview}).eq('id', oldReviews.id!);
+    await database.update({'review': newReview}).eq('id', oldReviews.id!);
   }
 
   // Delete

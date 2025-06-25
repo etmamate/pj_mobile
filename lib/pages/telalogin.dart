@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     paraHome() {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => TelaReview()));
     }
 
     return Scaffold(
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                iconColor: Colors.teal, // Cor do botão na imagem
+                iconColor: const Color.fromARGB(255, 0, 150, 136), // Cor do botão na imagem
                 minimumSize: Size(double.infinity, 50),
               ),
               child: Text('Login', style: TextStyle(fontSize: 16)),
