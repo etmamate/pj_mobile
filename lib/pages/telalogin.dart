@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pj_mobile/pages/telahomepage.dart';
+import 'package:pj_mobile/pages/tela_review.dart';
 
 class Telalogin extends StatelessWidget {
   const Telalogin({super.key});
