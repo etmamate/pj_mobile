@@ -56,8 +56,8 @@ class _TelaReviewState extends State<TelaReview> {
               title: Text('Selecione uma Série'),
               content: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: 0, // Garante altura mínima
-                  maxHeight: double.infinity,
+                  maxHeight: 300,
+                  maxWidth: MediaQuery.of(context).size.width * 0.8,
                 ),
                 child: SingleChildScrollView(
                   child:
@@ -203,24 +203,21 @@ class _TelaReviewState extends State<TelaReview> {
     );
   }
 
-  void updateReview(Reviews reviews) {
-    reviewController.text = reviews.review;
+  void editOrDeleteReview(Reviews review) {
+    reviewController.text = review.review;
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Editar Review'),
+            title: Text('Editar ou Excluir Review'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextField(controller: reviewController),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: selectTvShow,
-                  child: Text(
-                    'Série: ${reviews.tvShowId ?? "Não especificada"}',
-                  ),
+                TextField(
+                  controller: reviewController,
+                  decoration: InputDecoration(labelText: 'Review'),
                 ),
+                SizedBox(height: 10),
               ],
             ),
             actions: [
@@ -233,42 +230,38 @@ class _TelaReviewState extends State<TelaReview> {
               ),
               TextButton(
                 onPressed: () {
-                  reviewsDatabase.updateReview(reviews, reviewController.text);
+                  reviewsDatabase.updateReview(review, reviewController.text);
                   Navigator.pop(context);
                   reviewController.clear();
+                  setState(() {}); // Atualiza a UI
                 },
                 child: const Text("Salvar"),
-              ),
-            ],
-          ),
-    );
-  }
-
-  void deleteReview(Reviews review) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: const Text('Excluir Review'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  reviewController.clear();
-                },
-                child: const Text("Cancelar"),
               ),
               TextButton(
                 onPressed: () {
                   reviewsDatabase.deleteReview(review);
                   Navigator.pop(context);
                   reviewController.clear();
+                  setState(() {}); // Atualiza a UI
                 },
-                child: const Text("Excluir"),
+                child: const Text(
+                  "Excluir",
+                  style: TextStyle(color: Colors.red),
+                ),
               ),
             ],
           ),
     );
+  }
+
+  void updateReview(Reviews reviews) {
+    // Esta função pode ser removida ou integrada em editOrDeleteReview
+    editOrDeleteReview(reviews);
+  }
+
+  void deleteReview(Reviews review) {
+    // Esta função pode ser removida ou integrada em editOrDeleteReview
+    editOrDeleteReview(review);
   }
 
   @override
@@ -339,60 +332,55 @@ class _TelaReviewState extends State<TelaReview> {
                     a.createdAt ?? DateTime.now(),
                   ),
                 );
-                return SizedBox(
-                  // Adicionado SizedBox para controlar o tamanho
-                  height: double.infinity, // Ocupa o espaço disponível
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 3,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemCount: reviews.length,
-                    itemBuilder: (context, index) {
-                      final review = reviews[index];
-                      return FutureBuilder<TvShow>(
-                        future: tvShowService.getTvShowDetails(
-                          review.tvShowId!,
-                        ),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          final tvShow = snapshot.data!;
-                          return Card(
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 3,
+                  ),
+                  itemCount: reviews.length,
+                  itemBuilder: (context, index) {
+                    final review = reviews[index];
+                    return FutureBuilder<TvShow>(
+                      future: tvShowService.getTvShowDetails(review.tvShowId!),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                        final tvShow = snapshot.data!;
+                        return GestureDetector(
+                          onTap: () => editOrDeleteReview(review),
+                          child: Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(4.5),
-                              child: IntrinsicHeight(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      tvShow.name,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    tvShow.name,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(height: 5),
-                                    Expanded(
-                                      child: Text(
-                                        review.review,
-                                        maxLines: null,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Expanded(
+                                    child: Text(
+                                      review.review,
+                                      maxLines: null,
+                                      overflow: TextOverflow.visible,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 );
               },
             ),
