@@ -3,7 +3,6 @@ import 'package:pj_mobile/classes/review_database.dart';
 import 'package:pj_mobile/classes/reviews.dart';
 import 'package:pj_mobile/classes/tv_show.dart';
 import 'package:pj_mobile/services/tv_show_service.dart';
-import 'package:pj_mobile/core/constants.dart'; // Para usar tmdbBaseUrl, se necessário
 
 class TelaDetalhesSerie extends StatefulWidget {
   final int tvShowId;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pj_mobile/pages/tela_detalhes_serie.dart';
 import 'package:pj_mobile/pages/tela_review.dart';
 
 class Telalogin extends StatelessWidget {
