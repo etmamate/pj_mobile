@@ -4,7 +4,8 @@ class TvShow {
   final String? posterPath;
   final String? overview;
   final DateTime? lastUpdated;
-  final DateTime? firstAirDate; // Novo campo para data de estreia
+  final DateTime? firstAirDate;
+  final String? backdropPath; // Novo campo para o banner
 
   TvShow({
     required this.id,
@@ -13,6 +14,7 @@ class TvShow {
     this.overview,
     this.lastUpdated,
     this.firstAirDate,
+    this.backdropPath,
   });
 
   factory TvShow.fromMap(Map<String, dynamic> map) {
@@ -29,6 +31,7 @@ class TvShow {
           map['first_air_date'] != null
               ? DateTime.parse(map['first_air_date'] as String)
               : null,
+      backdropPath: map['backdrop_path'] as String?, // Adicionado
     );
   }
 
@@ -40,6 +43,7 @@ class TvShow {
       'overview': overview,
       'last_updated': lastUpdated?.toIso8601String(),
       'first_air_date': firstAirDate?.toIso8601String(),
+      'backdrop_path': backdropPath, // Adicionado
     };
   }
 }

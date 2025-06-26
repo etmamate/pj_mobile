@@ -3,6 +3,7 @@ import 'package:pj_mobile/classes/review_database.dart';
 import 'package:pj_mobile/classes/reviews.dart';
 import 'package:pj_mobile/classes/tv_show.dart';
 import 'package:pj_mobile/pages/tela_detalhes_serie.dart';
+import 'package:pj_mobile/pages/tela_principal.dart';
 import 'package:pj_mobile/services/tv_show_service.dart';
 import 'package:pj_mobile/core/constants.dart';
 import 'package:pj_mobile/core/api_client.dart';
@@ -334,7 +335,7 @@ class _TelaReviewState extends State<TelaReview> {
                 );
                 return GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 1,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     childAspectRatio: 3,
@@ -355,7 +356,7 @@ class _TelaReviewState extends State<TelaReview> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     tvShow.name,
@@ -370,7 +371,7 @@ class _TelaReviewState extends State<TelaReview> {
                                     child: Text(
                                       review.review,
                                       maxLines: null,
-                                      overflow: TextOverflow.visible,
+                                      overflow: TextOverflow.clip,
                                     ),
                                   ),
                                 ],

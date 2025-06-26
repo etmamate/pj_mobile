@@ -1,4 +1,4 @@
-#Thu Jun 26 02:51:42 BRT 2025
+#Thu Jun 26 17:29:58 BRT 2025
 base.0=C\:\\Users\\mateus\\ws-mobile\\projeto-mobile-romulo\\pj_mobile\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\mateus\\ws-mobile\\projeto-mobile-romulo\\pj_mobile\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 base.2=C\:\\Users\\mateus\\ws-mobile\\projeto-mobile-romulo\\pj_mobile\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex

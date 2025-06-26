@@ -3,6 +3,7 @@ import 'package:pj_mobile/classes/review_database.dart';
 import 'package:pj_mobile/classes/reviews.dart';
 import 'package:pj_mobile/classes/tv_show.dart';
 import 'package:pj_mobile/services/tv_show_service.dart';
+import 'package:pj_mobile/core/constants.dart'; // Para usar tmdbBaseUrl, se necessário
 
 class TelaDetalhesSerie extends StatefulWidget {
   final int tvShowId;
@@ -69,47 +70,74 @@ class _TelaDetalhesSerieState extends State<TelaDetalhesSerie> {
                 return Center(child: CircularProgressIndicator());
               }
               final reviews = reviewSnapshot.data!;
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
+              return SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      tvShow.name,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    // Banner da série
+                    if (tvShow.backdropPath != null)
+                      Container(
+                        height: 200, // Altura fixa para o banner
+                        width: double.infinity,
+                        child: Image.network(
+                          'https://image.tmdb.org/t/p/w500${tvShow.backdropPath}',
+                          fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(child: CircularProgressIndicator());
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey,
+                            ); // Placeholder em caso de erro
+                          },
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      'Estreia: ${tvShow.firstAirDate?.toLocal().toString().split(' ')[0] ?? 'Não disponível'}',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      tvShow.overview ?? 'Sem descrição disponível',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: addReview,
-                      child: Text('Adicionar Review'),
-                    ),
-                    SizedBox(height: 10),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: reviews.length,
-                        itemBuilder: (context, index) {
-                          final review = reviews[index];
-                          return Card(
-                            margin: EdgeInsets.symmetric(vertical: 5),
-                            child: ListTile(title: Text(review.review)),
-                          );
-                        },
+                    // Conteúdo existente
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            tvShow.name,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Estreia: ${tvShow.firstAirDate?.toLocal().toString().split(' ')[0] ?? 'Não disponível'}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            tvShow.overview ?? 'Sem descrição disponível',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          SizedBox(height: 20),
+                          ElevatedButton(
+                            onPressed: addReview,
+                            child: Text('Adicionar Review'),
+                          ),
+                          SizedBox(height: 10),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: reviews.length,
+                            itemBuilder: (context, index) {
+                              final review = reviews[index];
+                              return Card(
+                                margin: EdgeInsets.symmetric(vertical: 5),
+                                child: ListTile(title: Text(review.review)),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],

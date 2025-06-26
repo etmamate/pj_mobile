@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pj_mobile/pages/tela_detalhes_serie.dart';
+import 'package:pj_mobile/pages/tela_principal.dart';
 import 'package:pj_mobile/pages/tela_review.dart';
 import 'package:pj_mobile/pages/telalogin.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -17,6 +18,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
