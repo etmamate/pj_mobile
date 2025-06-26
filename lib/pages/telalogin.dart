@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pj_mobile/pages/tela_review.dart';
+import 'package:pj_mobile/pages/tela_principal.dart';
 
 class Telalogin extends StatelessWidget {
   const Telalogin({super.key});
@@ -20,7 +20,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     paraHome() {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => TelaReview()));
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => TelaPrincipal()),
+      );
     }
 
     return Scaffold(
@@ -84,7 +87,12 @@ class LoginScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                iconColor: const Color.fromARGB(255, 0, 150, 136), // Cor do botão na imagem
+                iconColor: const Color.fromARGB(
+                  255,
+                  0,
+                  150,
+                  136,
+                ), // Cor do botão na imagem
                 minimumSize: Size(double.infinity, 50),
               ),
               child: Text('Login', style: TextStyle(fontSize: 16)),

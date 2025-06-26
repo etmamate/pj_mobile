@@ -8,7 +8,12 @@ class ReviewDatabase {
   // Create
 
   Future createReview(Reviews newReview) async {
-    await database.insert(newReview.toMap());
+    try {
+      await database.insert(newReview.toMap());
+    } catch (e) {
+      print('Erro ao criar review: $e');
+      rethrow;
+    }
   }
 
   // Read
@@ -23,7 +28,9 @@ class ReviewDatabase {
   // Update
 
   Future updateReview(Reviews oldReviews, String newReview) async {
-    await database.update({'review': newReview}).eq('id', oldReviews.id!);
+    await database
+        .update({'review': newReview, 'movie_id': oldReviews.movieId})
+        .eq('id', oldReviews.id!);
   }
 
   // Delete
