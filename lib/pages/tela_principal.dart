@@ -9,28 +9,19 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipal extends State<TelaPrincipal> {
-  paraHome() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => TelaReview()));
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => TelaReview()),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => paraHome(),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 0, 150, 136),
-              ),
-              child: Text('Cadastrar Review', style: TextStyle(fontSize: 16)),
-            ),
-          ],
-        ),
-      ),
-    );
+    return Container();
   }
 }

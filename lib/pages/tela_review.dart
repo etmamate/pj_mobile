@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pj_mobile/classes/review_database.dart';
 import 'package:pj_mobile/classes/reviews.dart';
-import 'package:pj_mobile/services/movie_service.dart';
+import 'package:pj_mobile/classes/tv_show.dart';
+import 'package:pj_mobile/pages/tela_detalhes_serie.dart';
+import 'package:pj_mobile/services/tv_show_service.dart';
+import 'package:pj_mobile/core/constants.dart';
+import 'package:pj_mobile/core/api_client.dart';
 
 class TelaReview extends StatefulWidget {
   const TelaReview({super.key});
@@ -11,58 +15,135 @@ class TelaReview extends StatefulWidget {
 }
 
 class _TelaReviewState extends State<TelaReview> {
-  //revies db
   final reviewsDatabase = ReviewDatabase();
-
-  //text controller
   final reviewController = TextEditingController();
+  final tvShowService = TvShowService();
+  int? selectedTvShowId;
+  final TextEditingController searchController = TextEditingController();
+  List<TvShow> searchResults = [];
 
-  final movieService = MovieService();
-  int? selectedMovieId;
-
-  // select a movie
-  Future<void> selectMovie() async {
+  Future<void> searchTvShows(String query) async {
+    if (query.isEmpty) {
+      setState(() => searchResults = []);
+      return;
+    }
     try {
-      final movies = await movieService.getPopularMovies();
-      print('Filmes retornados: $movies'); // Depuração
-      if (movies.isEmpty) {
-        print('Nenhum filme retornado pela API.');
+      final endpoint =
+          '/search/tv?query=$query&include_adult=false&language=pt-BR&page=1';
+      final data = await ApiClient.get(endpoint);
+      final List<dynamic> results = data['results'] as List<dynamic>;
+      setState(() {
+        searchResults =
+            results
+                .map((json) => TvShow.fromMap(json as Map<String, dynamic>))
+                .toList();
+      });
+    } catch (e) {
+      print('Erro ao buscar séries: $e');
+    }
+  }
+
+  Future<void> selectTvShow() async {
+    try {
+      final tvShows = await tvShowService.getPopularTvShows();
+      if (tvShows.isEmpty) {
+        print('Nenhuma série retornada pela API.');
       }
       showDialog(
         context: context,
         builder:
-            (context) => AlertDialog(
-              title: Text('Selecione um Filme'),
-              content: SizedBox(
-                height: 300,
-                width: double.maxFinite,
-                child:
-                    movies.isEmpty
-                        ? Center(child: Text('Nenhum filme disponível.'))
-                        : ListView.builder(
-                          itemCount: movies.length,
-                          itemBuilder: (context, index) {
-                            final movie = movies[index];
-                            return ListTile(
-                              title: Text(movie.title),
-                              onTap: () {
-                                setState(() => selectedMovieId = movie.id);
-                                Navigator.pop(context);
-                              },
-                            );
-                          },
-                        ),
+            (BuildContext dialogContext) => AlertDialog(
+              title: Text('Selecione uma Série'),
+              content: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: 0, // Garante altura mínima
+                  maxHeight: double.infinity,
+                ),
+                child: SingleChildScrollView(
+                  child:
+                      searchResults.isNotEmpty
+                          ? ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount:
+                                searchResults.length > searchLimit
+                                    ? searchLimit
+                                    : searchResults.length,
+                            itemBuilder: (context, index) {
+                              final tvShow = searchResults[index];
+                              return ListTile(
+                                title: Text(tvShow.name),
+                                onTap: () {
+                                  print(
+                                    'Navegando para TelaDetalhesSerie com tvShowId: ${tvShow.id}',
+                                  );
+                                  Navigator.of(
+                                        dialogContext,
+                                        rootNavigator: true,
+                                      )
+                                      .push(
+                                        MaterialPageRoute(
+                                          builder:
+                                              (_) => TelaDetalhesSerie(
+                                                tvShowId: tvShow.id,
+                                              ),
+                                        ),
+                                      )
+                                      .then((_) => setState(() {}));
+                                },
+                              );
+                            },
+                          )
+                          : ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount:
+                                tvShows.length > searchLimit
+                                    ? searchLimit
+                                    : tvShows.length,
+                            itemBuilder: (context, index) {
+                              final tvShow = tvShows[index];
+                              return ListTile(
+                                title: Text(tvShow.name),
+                                onTap: () {
+                                  print(
+                                    'Navegando para TelaDetalhesSerie com tvShowId: ${tvShow.id}',
+                                  );
+                                  Navigator.of(
+                                        dialogContext,
+                                        rootNavigator: true,
+                                      )
+                                      .push(
+                                        MaterialPageRoute(
+                                          builder:
+                                              (_) => TelaDetalhesSerie(
+                                                tvShowId: tvShow.id,
+                                              ),
+                                        ),
+                                      )
+                                      .then((_) => setState(() {}));
+                                },
+                              );
+                            },
+                          ),
+                ),
               ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(dialogContext),
+                  child: Text('Fechar'),
+                ),
+              ],
             ),
       );
     } catch (e) {
-      print('Erro ao carregar filmes: $e'); // Log do erro
+      print('Erro ao carregar séries: $e');
       showDialog(
         context: context,
         builder:
             (context) => AlertDialog(
               title: Text('Erro'),
-              content: Text('Falha ao carregar filmes: $e'),
+              content: Text('Falha ao carregar séries: $e'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
@@ -74,7 +155,6 @@ class _TelaReviewState extends State<TelaReview> {
     }
   }
 
-  //user wants to add a new review
   void addnewReview() {
     showDialog(
       context: context,
@@ -87,17 +167,16 @@ class _TelaReviewState extends State<TelaReview> {
                 TextField(controller: reviewController),
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: selectMovie,
+                  onPressed: selectTvShow,
                   child: Text(
-                    selectedMovieId == null
-                        ? 'Selecionar Filme'
-                        : 'Filme: $selectedMovieId',
+                    selectedTvShowId == null
+                        ? 'Selecionar Série'
+                        : 'Série: ${selectedTvShowId}',
                   ),
                 ),
               ],
             ),
             actions: [
-              //cancel button
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -105,17 +184,15 @@ class _TelaReviewState extends State<TelaReview> {
                 },
                 child: const Text("Cancelar"),
               ),
-
-              //save button
               TextButton(
                 onPressed: () {
-                  //create a new review and save on database
-                  final newReview = Reviews(review: reviewController.text);
-                  print(
-                    'Enviando para o Supabase: ${newReview.toMap()}',
-                  ); // Depuração
-                  reviewsDatabase.createReview(newReview);
-
+                  if (selectedTvShowId != null) {
+                    final newReview = Reviews(
+                      review: reviewController.text,
+                      tvShowId: selectedTvShowId,
+                    );
+                    reviewsDatabase.createReview(newReview);
+                  }
                   Navigator.pop(context);
                   reviewController.clear();
                 },
@@ -126,11 +203,8 @@ class _TelaReviewState extends State<TelaReview> {
     );
   }
 
-  //user wants to edit review
   void updateReview(Reviews reviews) {
-    //pre-fill text controller with existing note
     reviewController.text = reviews.review;
-
     showDialog(
       context: context,
       builder:
@@ -142,13 +216,14 @@ class _TelaReviewState extends State<TelaReview> {
                 TextField(controller: reviewController),
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: selectMovie,
-                  child: Text('Filme: ${reviews.movieId}'),
+                  onPressed: selectTvShow,
+                  child: Text(
+                    'Série: ${reviews.tvShowId ?? "Não especificada"}',
+                  ),
                 ),
               ],
             ),
             actions: [
-              //cancel button
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -156,12 +231,9 @@ class _TelaReviewState extends State<TelaReview> {
                 },
                 child: const Text("Cancelar"),
               ),
-
-              //save button
               TextButton(
                 onPressed: () {
                   reviewsDatabase.updateReview(reviews, reviewController.text);
-
                   Navigator.pop(context);
                   reviewController.clear();
                 },
@@ -172,7 +244,6 @@ class _TelaReviewState extends State<TelaReview> {
     );
   }
 
-  //user wants to delete review
   void deleteReview(Reviews review) {
     showDialog(
       context: context,
@@ -180,7 +251,6 @@ class _TelaReviewState extends State<TelaReview> {
           (context) => AlertDialog(
             title: const Text('Excluir Review'),
             actions: [
-              //cancel button
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -188,12 +258,9 @@ class _TelaReviewState extends State<TelaReview> {
                 },
                 child: const Text("Cancelar"),
               ),
-
-              //save button
               TextButton(
                 onPressed: () {
                   reviewsDatabase.deleteReview(review);
-
                   Navigator.pop(context);
                   reviewController.clear();
                 },
@@ -204,68 +271,133 @@ class _TelaReviewState extends State<TelaReview> {
     );
   }
 
-  // BUILD UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Reviews")),
-
-      //Button
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 0, 150, 136),
-        onPressed: addnewReview,
-        child: const Icon(Icons.add),
+      appBar: AppBar(
+        title: const Text("Reviews"),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: 'Pesquisar série...',
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => searchTvShows(searchController.text),
+                ),
+              ),
+              onSubmitted: searchTvShows,
+            ),
+          ),
+        ),
       ),
-
-      //Body => Streambuilder
-      body: StreamBuilder(
-        //listens to this
-        stream: reviewsDatabase.stream,
-
-        //to build a UI
-        builder: (context, snapshot) {
-          //loading..
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          //loaded
-          final reviews = snapshot.data!;
-
-          //list of notes UI
-          return ListView.builder(
-            itemCount: reviews.length,
-            itemBuilder: (context, index) {
-              //get each note
-              final review = reviews[index];
-
-              //list tile UI
-              return ListTile(
-                title: Text(review.review),
-                subtitle: Text(
-                  'Filme ID: ${review.movieId ?? "Não especificado"} ',
-                ),
-                trailing: SizedBox(
-                  width: 100,
-                  child: Row(
-                    children: [
-                      //edit button
-                      IconButton(
-                        onPressed: () => updateReview(review),
-                        icon: const Icon(Icons.edit),
-                      ),
-                      //delete button
-                      IconButton(
-                        onPressed: () => deleteReview(review),
-                        icon: const Icon(Icons.delete),
-                      ),
-                    ],
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: const Color.fromARGB(255, 0, 150, 136),
+      //   onPressed: addnewReview,
+      //   child: const Icon(Icons.add),
+      // ),
+      body: Column(
+        children: [
+          if (searchResults.isNotEmpty)
+            Expanded(
+              child: ListView.builder(
+                itemCount:
+                    searchResults.length > searchLimit
+                        ? searchLimit
+                        : searchResults.length,
+                itemBuilder: (context, index) {
+                  final tvShow = searchResults[index];
+                  return ListTile(
+                    title: Text(tvShow.name),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (_) => TelaDetalhesSerie(tvShowId: tvShow.id),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          Expanded(
+            child: StreamBuilder(
+              stream: reviewsDatabase.stream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final reviews = snapshot.data!;
+                reviews.sort(
+                  (a, b) => (b.createdAt ?? DateTime.now()).compareTo(
+                    a.createdAt ?? DateTime.now(),
                   ),
-                ),
-              );
-            },
-          );
-        },
+                );
+                return SizedBox(
+                  // Adicionado SizedBox para controlar o tamanho
+                  height: double.infinity, // Ocupa o espaço disponível
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: reviews.length,
+                    itemBuilder: (context, index) {
+                      final review = reviews[index];
+                      return FutureBuilder<TvShow>(
+                        future: tvShowService.getTvShowDetails(
+                          review.tvShowId!,
+                        ),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          final tvShow = snapshot.data!;
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.5),
+                              child: IntrinsicHeight(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      tvShow.name,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    SizedBox(height: 5),
+                                    Expanded(
+                                      child: Text(
+                                        review.review,
+                                        maxLines: null,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
