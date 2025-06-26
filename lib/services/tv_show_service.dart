@@ -1,6 +1,5 @@
 import 'package:pj_mobile/classes/tv_show.dart';
 import 'package:pj_mobile/core/api_client.dart';
-import 'package:pj_mobile/core/constants.dart';
 import 'package:pj_mobile/classes/review_database.dart';
 
 class TvShowService {

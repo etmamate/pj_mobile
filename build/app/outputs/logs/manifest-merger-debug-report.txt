@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 application
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:2:5-33:19
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
-MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-12:19
-MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-12:19
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:2:5-33:19
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
+MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.2.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.window:window:1.2.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
@@ -17,21 +17,21 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\mateus\.gradle\cac
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:name
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:1:1-45:12
-MERGED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:1:1-45:12
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
-MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-14:12
-MERGED from [:app_links] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:1:1-45:12
+MERGED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:1:1-45:12
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-14:12
+MERGED from [:app_links] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.preference:preference:1.2.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\0098a6e93522fecc805d8900172003dc\transformed\preference-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.8.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\308a2e77faa557d0bd706972416bde6a\transformed\browser-1.8.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\75e1bcd7a8b61b1e132d50e7766bfd37\transformed\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -87,41 +87,41 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\mateus\
 MERGED from [org.microg:safe-parcel:1.7.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\e8e12b6829d4101dc434d765546d66c9\transformed\jetified-safe-parcel-1.7.0\AndroidManifest.xml:6:1-14:12
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\mateus\.gradle\caches\8.10.2\transforms\9e1412f82216e9a99f9f845f4567c1f2\transformed\jetified-relinker-1.4.5\AndroidManifest.xml:2:1-7:12
 	package
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:1:11-69
+		ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:1:11-69
 queries
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:39:5-44:15
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:39:5-44:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:40:9-43:18
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:40:9-43:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:41:13-72
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:41:13-72
 	android:name
-		ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:41:21-70
+		ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:41:21-70
 data
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:42:13-50
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:42:13-50
 	android:mimeType
-		ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\main\AndroidManifest.xml:42:19-48
+		ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\main\AndroidManifest.xml:42:19-48
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml:6:5-66
+ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml:6:5-66
 	android:name
-		ADDED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml:6:22-64
+		ADDED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml:6:22-64
 uses-sdk
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
-INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
-MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:app_links] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:app_links] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
+MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\shared_preferences_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:app_links] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:app_links] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\app_links\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [androidx.preference:preference:1.2.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\0098a6e93522fecc805d8900172003dc\transformed\preference-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.preference:preference:1.2.1] C:\Users\mateus\.gradle\caches\8.10.2\transforms\0098a6e93522fecc805d8900172003dc\transformed\preference-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.8.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\308a2e77faa557d0bd706972416bde6a\transformed\browser-1.8.0\AndroidManifest.xml:5:5-44
@@ -231,17 +231,17 @@ MERGED from [org.microg:safe-parcel:1.7.0] C:\Users\mateus\.gradle\caches\8.10.2
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\mateus\.gradle\caches\8.10.2\transforms\9e1412f82216e9a99f9f845f4567c1f2\transformed\jetified-relinker-1.4.5\AndroidManifest.xml:5:5-43
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\mateus\.gradle\caches\8.10.2\transforms\9e1412f82216e9a99f9f845f4567c1f2\transformed\jetified-relinker-1.4.5\AndroidManifest.xml:5:5-43
 	android:targetSdkVersion
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\mateus\ws-mobile\senhor_das_reviews\android\app\src\debug\AndroidManifest.xml
 activity#io.flutter.plugins.urllauncher.WebViewActivity
-ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-11:74
+ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-11:74
 	android:exported
-		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-37
+		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-37
 	android:theme
-		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-71
+		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-71
 	android:name
-		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\projeto-mobile-romulo\pj_mobile\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-74
+		ADDED from [:url_launcher_android] C:\Users\mateus\ws-mobile\senhor_das_reviews\build\url_launcher_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.2.0] C:\Users\mateus\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
 	android:required

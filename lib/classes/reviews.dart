@@ -2,7 +2,7 @@ class Reviews {
   int? id;
   String review;
   int? tvShowId;
-  DateTime? createdAt; // Novo campo para data de criação
+  DateTime? createdAt;
 
   Reviews({this.id, required this.review, this.tvShowId, this.createdAt});
 
