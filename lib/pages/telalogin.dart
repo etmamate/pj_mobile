@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pj_mobile/pages/tela_detalhes_serie.dart';
 import 'package:pj_mobile/pages/tela_principal.dart';
+import 'package:pj_mobile/pages/tela_review.dart';
 
 class Telalogin extends StatelessWidget {
   const Telalogin({super.key});
@@ -21,10 +22,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     paraHome() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => TelaPrincipal()),
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (_) => TelaReview()));
     }
 
     return Scaffold(
