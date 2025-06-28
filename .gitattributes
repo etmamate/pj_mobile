@@ -1,3 +1,10 @@
+# Oculta Makefile e arquivos .mk da análise de linguagem
 Makefile linguist-detectable=false
-
 *.mk linguist-detectable=false
+
+# (Opcional) Oculta arquivos e pastas comuns que não fazem parte do código principal
+test/* linguist-detectable=false
+tests/* linguist-detectable=false
+scripts/* linguist-detectable=false
+docs/* linguist-detectable=false
+exemplos/* linguist-detectable=false
