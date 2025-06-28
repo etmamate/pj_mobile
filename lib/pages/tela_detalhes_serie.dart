@@ -75,7 +75,7 @@ class _TelaDetalhesSerieState extends State<TelaDetalhesSerie> {
                   children: [
                     // Banner da série
                     if (tvShow.backdropPath != null)
-                      Container(
+                      SizedBox(
                         height: 200, // Altura fixa para o banner
                         width: double.infinity,
                         child: Image.network(

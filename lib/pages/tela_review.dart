@@ -171,7 +171,7 @@ class _TelaReviewState extends State<TelaReview> {
                   child: Text(
                     selectedTvShowId == null
                         ? 'Selecionar Série'
-                        : 'Série: ${selectedTvShowId}',
+                        : 'Série: $selectedTvShowId',
                   ),
                 ),
               ],
