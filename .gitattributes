@@ -1,11 +1,3 @@
-# Example of a `.gitattributes` file which reclassifies `.rb` files as Java:
-*.rb linguist-language=Dart
+Makefile linguist-detectable=false
 
-# # Replace any whitespace in the language name with hyphens:
-# *.glyphs linguist-language=OpenStep-Property-List
-
-# # Language names are case-insensitive and may be specified using an alias.
-# # So, the following three lines are all functionally equivalent:
-*.makefile linguist-language=dart
-# *.es linguist-language=JS
-# *.es linguist-language=JAVASCRIPT
+*.mk linguist-detectable=false
