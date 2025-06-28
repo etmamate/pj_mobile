@@ -1,1 +1,0 @@
- C:\\Users\\mateus\\ws-mobile\\projeto-mobile-romulo\\pj_mobile\\.dart_tool\\flutter_build\\5135d5ff62de0cd2f0a750dde9e42d1e\\native_assets.json: 
